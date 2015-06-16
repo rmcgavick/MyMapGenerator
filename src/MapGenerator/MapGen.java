@@ -19,33 +19,45 @@ public class MapGen extends JPanel {
 		mapTiles = randomizeMap(x, y);
 	}
 	
-	// simple randomize method, just uses random number generator
+	// first attempt at a more realistic randomizeMap method
 	protected JLabel[][] randomizeMap(int width, int height) {
 		String c = "";
 		JLabel[][] mt = new JLabel[height][width];
+		Random rn = new Random();
+		int n = rn.nextInt((5 - 0) + 1) + 0;
+		int[] m = new int[width];
 		
-		for(int i = 0; i < height; i++) {
+		for(int i = 0; i < height; i++) {			
 			for(int j = 0; j < width; j++) {
-				Random rn = new Random();
-				int n = rn.nextInt((5 - 0) + 1) + 0;
-				switch(n) {
-					case 0: c = "DeepWater"; 
-								break;
-					case 1: c = "ShallowWater"; 
-								break;
-					case 2: c = "Beach"; 
-								break;
-					case 3: c = "Forest"; 
-								break;
-					case 4: c = "Hills";  
-								break;
-					case 5: c = "Mountains"; 
-								break;
+				
+				if(i == 0) {
+					n = rn.nextInt(((n+1) - (n-1)) + 1) + (n-1);
+					m[j] = n;
+					System.out.println(m[j]);
+				} else {
+					n = rn.nextInt(((m[j]+1) - (m[j]-1)) + 1) + (m[j]-1);
+					m[j] = n;
 				}
-				map[i][j] = new MapTile(i, j, c);
-				mt[i][j] = new JLabel(new ImageIcon(map[i][j].getTileImage()));
-				add(mt[i][j]);
+						switch(n) {
+							case 0: c = "DeepWater"; 
+									break;
+							case 1: c = "ShallowWater"; 
+									break;
+							case 2: c = "Beach"; 
+									break;
+							case 3: c = "Forest"; 
+									break;
+							case 4: c = "Hills";  
+									break;
+							case 5: c = "Mountains"; 
+									break;
+						}
+					map[i][j] = new MapTile(i, j, c);
+					mt[i][j] = new JLabel(new ImageIcon(map[i][j].getTileImage()));
+					add(mt[i][j]);
+				
 			}
+
 		}
 		return mt;
 	}

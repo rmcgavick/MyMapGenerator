@@ -49,6 +49,10 @@ public class MapTile {
 		return tileImageHeight;
 	}	
 	
+	public String getTileImageName() {
+		return tileImageName;
+	}
+	
 	public String toString() {
 		return "" + tileImageName;
 	}
