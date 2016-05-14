@@ -8,14 +8,14 @@ import javax.swing.*;
 public class GUI extends JFrame{
 	
 	// Set myMapSize to set the desired width and height of the map
-	private final static int myMapWidth = 80;
-	private final static int myMapHeight = 50;
-	private final static int tilePixelWidth = 20;
-	private final static int tilePixelHeight = 20;
+	private final static int myMapWidth = 140;
+	private final static int myMapHeight = 90;
+	private final static int tilePixelWidth = 10;
+	private final static int tilePixelHeight = 10;
 	private final static int heightOffset = 28; //Offsets to account for the window border
 	private final static int widthOffset = 6;
-	private final static int octaves = 8; // set number of octaves to generate Perlin noise with (higher = more smooth maps)
-	private final static float persistence = 0.8f; // set persistence (higher = more variance among tiles)
+	private final static int octaves = 5; // set number of octaves to generate Perlin noise with (higher = smoother maps)
+	private final static float persistence = 0.4f; // set persistence (higher = more variance among tiles)
 	
 	private static void createGUI() {
 		

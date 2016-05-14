@@ -7,8 +7,8 @@ import javax.swing.*;
 
 public class MapGen extends JPanel {
 
-	protected int x; // height of map in number of tiles
-	protected int y; // width of map in number of tiles
+	protected int x; // width of map in number of tiles
+	protected int y; // height of map in number of tiles
 	protected int octave;
 	protected float persistence;
 	protected MapTile[][] tileGrid;
@@ -20,12 +20,8 @@ public class MapGen extends JPanel {
 		octave = oct;
 		persistence = p;
 		tileGrid = new MapTile[x][y];
+		
 		mapTiles = generateRandomMap(tileGrid, generatePerlinNoise(generateWhiteNoise(x,y),octave,persistence));
-		
-		
-//		mapTiles = randomizeMap(x, y);			
-		// testing
-		//generatePerlinNoise(generateWhiteNoise(x,y),7);
 	}
 	
 	protected JLabel[][] generateRandomMap(MapTile[][] map, float[][] perlinNoise) {
@@ -37,21 +33,20 @@ public class MapGen extends JPanel {
 		
 		for (int i=0; i<width; i++) {
 			for (int j=0; j<height; j++) {
-				//int n = Math.round(perlinNoise[i][j]);
 				
 				if(perlinNoise[i][j]<=0.3) {
 					tile = "DeepWater"; 
 				}
-				else if(perlinNoise[i][j]<=0.4) {
+				else if(perlinNoise[i][j]<=0.55) {
 					tile = "ShallowWater";
 				}
-				else if(perlinNoise[i][j]<=0.5) {
+				else if(perlinNoise[i][j]<=0.6) {
 					tile = "Beach";
 				}
-				else if(perlinNoise[i][j]<=0.65) {
+				else if(perlinNoise[i][j]<=0.7) {
 					tile = "Forest";
 				}
-				else if(perlinNoise[i][j]<=0.75) {
+				else if(perlinNoise[i][j]<=0.86) {
 					tile = "Hills";
 				}
 				else {
@@ -110,7 +105,6 @@ public class MapGen extends JPanel {
 		for (int i=0; i<width; i++) {
 			for (int j=0; j<height; j++) {
 				noise[i][j] = (float)rn.nextFloat() % 1;
-				//System.out.println(noise[i][j]);
 			}
 		}		
 		return noise;
@@ -144,7 +138,6 @@ public class MapGen extends JPanel {
 				float bottom = interpolate(baseNoise[i0][j1], baseNoise[i1][j1], horiz_blend);
 				// blend the rest of the 2d array
 				smoothNoise[i][j] = interpolate(top, bottom, vert_blend);
-				//System.out.println(smoothNoise[i][j]);
 			}
 		}
 		return smoothNoise;
