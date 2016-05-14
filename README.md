@@ -7,4 +7,6 @@ I have the display working, with psuedo-random tile placement. The 6 tiles range
 
 UPDATE 4/20/16: I fixed the size of the tiles, and now have my base "random" map, which is essentially just randomly-placed tiles. It's not totally random, as I implemented a simple sudo-random algorithm I came up with. You will notice the result is that tiles are often "duplicated", with the same tile often appearing multiple times in a horizontal string. The result still is a farcry from being a real "map", though. (see word doc for screenshots).
 
-UPDATE 5/12/16: Successfully implemented a Perlin (Simplex?) Noise algorithm. It works, but I'd like to make the tiles even smaller so I can create "larger" maps. I'm going to continue to play around with the number of octaves and persistence value to get the right look and feel, but eventually I would like to add a scroll bar so I can make a map that's bigger than the screen viewport.
+UPDATE 5/12/16: Successfully implemented a Perlin Noise algorithm. It works, but I'd like to make the tiles even smaller so I can create "larger" maps. I'm going to continue to play around with the number of octaves and persistence value to get the right look and feel, but eventually I would like to add a scroll bar so I can make a map that's bigger than the screen viewport.
+
+Also added ProjectNotes.docx, which contains some screenshots as well as some more detailed notes.
