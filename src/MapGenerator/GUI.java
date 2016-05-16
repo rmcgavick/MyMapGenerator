@@ -15,7 +15,7 @@ public class GUI extends JFrame{
 	private final static int heightOffset = 28; //Offsets to account for the window border
 	private final static int widthOffset = 6;
 	private final static int octaves = 5; // set number of octaves to generate Perlin noise with (higher = smoother maps)
-	private final static float persistence = 0.4f; // set persistence (higher = more variance among tiles)
+	private final static float persistence = 0.4f; // set persistence to float between 0 and 1 (higher = more variance among tiles)
 	
 	private static void createGUI() {
 		

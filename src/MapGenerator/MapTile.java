@@ -9,15 +9,18 @@ import javax.swing.*;
 
 public class MapTile {
 
+	private int tileImageType; 
 	private String tileImageName;
+	private boolean passable; // will need to implement this for pathfinding
 	private int XPos;
 	private int YPos;
 	private int tileImageWidth;
 	private int tileImageHeight;
 	private BufferedImage tileImage;
 	
-	public MapTile(int x, int y, String mi) {
-		tileImageName = mi;
+	public MapTile(int x, int y, int mi) {
+		tileImageType = mi; 
+		tileImageName = setImageNameFromType(tileImageType);
 		XPos = x;
 		YPos = y;
 		try {
@@ -49,8 +52,48 @@ public class MapTile {
 		return tileImageHeight;
 	}	
 	
-	public String getTileImageName() {
-		return tileImageName;
+	public int getTileImageType() {
+		return tileImageType;
+	}
+	
+	// will need getters/setters for passable
+	
+	// will need getters/setters for is "active" tile (mouse and/or keyboard listeners)
+	
+	// skeleton method to redraw tile to use another image.
+	public void redrawTileImage(int newTileImage) {		
+		tileImageType = newTileImage;
+		tileImageName = setImageNameFromType(tileImageType);
+		try {
+			tileImage = ImageIO.read(this.getClass().getResource("/resources/" + tileImageName + ".png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public String setImageNameFromType(int type) {
+		String temp;
+		switch(type) {
+		case 0:
+			temp = "DeepWater";
+			break;
+		case 1:
+			temp = "ShallowWater";
+			break;
+		case 2:
+			temp = "Beach";
+			break;
+		case 3:
+			temp = "Forest";
+			break;
+		case 4:
+			temp = "Hills";
+			break;
+		default:
+			temp = "Mountains";
+			break;
+		}
+		return temp;
 	}
 	
 	public String toString() {

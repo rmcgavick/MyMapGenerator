@@ -28,29 +28,29 @@ public class MapGen extends JPanel {
 		int width = perlinNoise.length;
 		int height = perlinNoise[0].length;
 		
-		String tile = "";
+		int tile;
 		JLabel[][] tiledMap = new JLabel[width][height];
 		
 		for (int i=0; i<width; i++) {
 			for (int j=0; j<height; j++) {
-				
+				// refactor below to use int values instead of strings
 				if(perlinNoise[i][j]<=0.3) {
-					tile = "DeepWater"; 
+					tile = 0; 
 				}
-				else if(perlinNoise[i][j]<=0.55) {
-					tile = "ShallowWater";
+				else if(perlinNoise[i][j]<=0.56) {
+					tile = 1;
 				}
 				else if(perlinNoise[i][j]<=0.6) {
-					tile = "Beach";
+					tile = 2;
 				}
 				else if(perlinNoise[i][j]<=0.7) {
-					tile = "Forest";
+					tile = 3;
 				}
-				else if(perlinNoise[i][j]<=0.86) {
-					tile = "Hills";
+				else if(perlinNoise[i][j]<=0.85) {
+					tile = 4;
 				}
 				else {
-					tile = "Mountains";
+					tile = 5;
 				}
 
 				map[i][j] = new MapTile(i, j, tile);
